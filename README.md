@@ -28,27 +28,57 @@ MAE is a reliable metric for regression problems, as it measures the average abs
 
 To streamline the data preprocessing and modeling workflow, I leveraged the scikit-learn pipeline. This approach allowed for efficient feature engineering, hyperparameter tuning, and model selection. By using pipelines, I could automate many of the repetitive tasks and ensure reproducibility of the results.
 
-## Results (To Be Added)
+## Final Model Selection and Deployment
 
-I will now provide an overview of the results obtained from the various approaches outlined above. This section will include performance metrics such as MAE, as well as any additional insights gained from the models. Additionally, I will discuss potential improvements and future directions for this project.
+In the culmination of this project, we have developed a robust price modeling system using a combination of data-driven approaches and machine learning techniques. The primary goal of this project was to predict prices of commodities, assets, or products with a high degree of accuracy, with a focus on minimizing the Mean Absolute Error (MAE) as the evaluation metric.
 
-## Future Directions and Ideas
+### Data Preparation
 
-1. **Ensemble Learning**: Consider implementing ensemble techniques, such as stacking or blending, to combine the strengths of multiple regression models. This could potentially lead to further improvements in predictive accuracy.
+The project began with loading and preprocessing the dataset, which included splitting it into training and test sets and performing standard scaling. This essential step ensured that the data was appropriately prepared for modeling.
 
-2. **Feature Engineering**: Continuously explore feature engineering techniques to extract more valuable information from the data. Feature selection and transformation can significantly impact model performance.
+### Dimensionality Reduction
 
-3. **Data Sources**: Expand the dataset by incorporating additional relevant data sources. This could include economic indicators, social media sentiment analysis, or news sentiment, depending on the nature of the commodity or asset being modeled.
+To address the challenge of high-dimensional data and reduce the risk of overfitting, we implemented Principal Component Analysis (PCA) for dimensionality reduction. This transformation allowed us to represent the complex feature space in a more manageable lower-dimensional form while preserving critical information.
 
-4. **Deep Learning**: Experiment with deep learning models, such as neural networks, especially when dealing with complex and high-dimensional data.
+### Model Selection: Huber Regression
 
-5. **Time Series Analysis**: If the project involves time-series data, consider incorporating time series-specific models like ARIMA or LSTM to capture temporal patterns effectively.
+After experimenting with various regression models, the Huber Regression model emerged as the most suitable choice. Huber Regression is a robust algorithm known for its resilience to outliers, making it particularly well-suited for real-world datasets where anomalies can significantly impact predictions.
 
-6. **Real-Time Updates**: Implement a mechanism for real-time updates of the price models, allowing for adaptability to changing market conditions.
+### Model Evaluation
+
+The performance of the Huber Regression model was thoroughly assessed using key regression metrics:
+
+- **Mean Absolute Error (MAE)**: This metric measures the average absolute difference between predicted and actual values.
+- **Mean Squared Error (MSE)**: It quantifies the average squared difference between predicted and actual values.
+- **R-squared (R²)**: An indicator of goodness of fit, measuring how well the regression model explains the variance in the data.
+
+The Huber Regression model demonstrated robust performance with the following results:
+
+- Mean Absolute Error: 3.0984
+- Mean Squared Error: 18.0874
+- R-squared: 0.7539
+
+### Hyperparameter Tuning
+
+To further optimize the Huber Regression model, we employed Bayesian optimization for hyperparameter tuning. This process helped us identify the best combination of hyperparameters to enhance the model's performance. The optimized hyperparameters were as follows:
+
+- Best Parameters: {'alpha': 0.0001, 'epsilon': 2.0}
+
+### Streamlined Code Execution
+
+To optimize the code execution process and enhance its efficiency, we integrated the 'tqdm' library. This provided a progress bar to monitor the execution of time-consuming tasks, such as Bayesian hyperparameter optimization. This optimization significantly improved the workflow's manageability and allowed for better tracking of time-consuming tasks.
+
+### Final Model Performance
+
+After hyperparameter tuning, we evaluated the final Huber Regression model with the optimized parameters. The results confirmed the model's effectiveness:
+
+- Best Parameters: {'alpha': 0.0001, 'epsilon': 2.0}
+- Mean Squared Error: 16.7353
+- R² Score: 0.7723
+- MAE: 3.0171
 
 ## Conclusion
 
-This project has explored various approaches to price modeling, emphasizing the reduction of MAE as the primary objective. By utilizing Bayesian optimization, a range of regression models, and scikit-learn pipelines, we have made significant strides in predicting prices accurately. The forthcoming results section will provide a detailed assessment of model performance, and the ideas mentioned above offer potential avenues for further improvement. Overall, this project demonstrates the potential of machine learning in the domain of price modeling and forecasting.
-```
+In conclusion, this project has successfully developed a price modeling system using various regression techniques, with the final deployment of the Huber Regression model. This model excels in predicting prices accurately while maintaining robustness to outliers, making it a valuable tool for pricing optimization, financial forecasting, and market analysis.
 
-You can copy and paste this Markdown code into your Markdown file (e.g., `README.md`) on GitHub or any Markdown editor for rendering.
+As a next step, further refinement and improvement of the project could involve exploring additional features, conducting ongoing monitoring of model performance, and adapting the system to real-world scenarios to ensure its continued effectiveness in a dynamic environment. The integration of 'tqdm' for code optimization serves as a testament to the commitment to improving efficiency and manageability in the development process.
