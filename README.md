@@ -1,6 +1,3 @@
-Certainly, here is the content converted into Markdown (`.md`) format:
-
-```markdown
 # Project Report: Price Modeling with Various Regression Techniques
 
 ## Introduction
